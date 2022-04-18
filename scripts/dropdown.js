@@ -1,7 +1,7 @@
 import GalleryFactory from "./factories/media.js";
 
 export default class DropdownSort {
-  Dropdown(data) {
+  dropdown(data) {
     let sortOpen = document.getElementsByClassName("sort-btn");
     let hiddenSort = document.getElementsByClassName("hidden-sort");
     if (sortOpen) {
@@ -44,7 +44,6 @@ export default class DropdownSort {
         }
         // Affichage des médias triés
         this.displaySort(mediaSorted);
-        console.log(mediaSorted);
       })
     );
   }

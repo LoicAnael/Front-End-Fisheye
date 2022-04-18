@@ -1,16 +1,16 @@
 // Ajout ou retrait d'un like au clic
-export default class likeEvent {
+export default class LikeEvent {
   constructor() {
-    let galerie = document.getElementById("photographer-gallery");
+    let gallery = document.querySelector("#photographer-gallery");
 
-    galerie.addEventListener("click", (e) => {
-      let likeBtn = -1 != e.target.classList.value.indexOf("heart-btn");
+    gallery.addEventListener("click", (e) => {
+      let likeBtn = -1 !== e.target.classList.value.indexOf("fa-heart");
       console.log(e);
       if (likeBtn) {
         let counterLike =
           e.target.parentNode.firstElementChild.firstElementChild;
         let totalPhLikes = document.getElementById("total-likes");
-        let isLiked = -1 != e.target.classList.value.indexOf("isLiked");
+        let isLiked = -1 !== e.target.classList.value.indexOf("isLiked");
         if (isLiked) {
           e.target.classList.remove("isLiked");
           e.target.classList.replace("fas", "far");

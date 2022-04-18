@@ -1,4 +1,4 @@
-class imgFactory {
+class ImgFactory {
   creatingHTML(photographer) {
     let eltImage = document.createElement("img");
     eltImage.setAttribute("src", photographer.image);
@@ -8,14 +8,14 @@ class imgFactory {
   }
 }
 //creation des cartes protographes en fonction des donnees .json
-class photographerFactory {
+class PhotographerFactory {
   createPhotographer(photographer) {
-    let photographerFactory = new imgFactory().creatingHTML(photographer);
+    let imgFactory = new ImgFactory().creatingHTML(photographer);
     const ARTICLE = document.createElement("article");
     ARTICLE.className = "photographers-grid";
     let templatePhotographer = `
       <a href="./photographer.html?id=${photographer.id}">
-      ${photographerFactory.outerHTML}
+      ${imgFactory.outerHTML}
       <h2 class="name">${photographer.name}</h2>
       </a>
       <p class="location">${photographer.city}, ${photographer.country}</p>
@@ -28,12 +28,11 @@ class photographerFactory {
 }
 // Récupération du tableau des photographes
 export function displayPhotographers({ dataPhotographers }) {
-  console.log({ dataPhotographers });
   const photographersSection = document.querySelector(".photographers_section");
   // remplissage de la section "photographers_section" avec tous les photographes
   dataPhotographers.forEach((photographer) => {
     photographersSection.appendChild(
-      new photographerFactory().createPhotographer(photographer)
+      new PhotographerFactory().createPhotographer(photographer)
     );
   });
 }

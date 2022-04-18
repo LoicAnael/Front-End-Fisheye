@@ -11,10 +11,6 @@ export default class LightBox {
         let lightBoxName = document.getElementById("lightbox-name");
         let mediaDisplay = mediaItems[index];
         let nameDisplay = mediaName[index];
-        if (media.tagName == "VIDEO") {
-          media.setAttribute("controls", "controls");
-          console.log(media);
-        }
         let openLightbox = document.querySelector(".lightbox");
         openLightbox.classList.add("show");
         openLightbox.setAttribute("aria-hidden", "false");
@@ -24,11 +20,11 @@ export default class LightBox {
     );
 
     this.previous(mediaItems, mediaName);
-    this.KeyPrevious(mediaItems, mediaName);
+    this.keyPrevious(mediaItems, mediaName);
     this.next(mediaItems, mediaName);
-    this.KeyNext(mediaItems, mediaName);
+    this.keyNext(mediaItems, mediaName);
     this.close();
-    this.KeyClose();
+    this.keyClose();
   }
   // Fermeture de la lightbox
   close() {
@@ -76,7 +72,7 @@ export default class LightBox {
 
   ////////navigations clavier///////////
   //fermeture via la touche Echapper
-  KeyClose() {
+  keyClose() {
     document.addEventListener("keyup", (e) => {
       if (e.key == "Escape") {
         let lightbox = document.querySelector(".lightbox");
@@ -86,7 +82,7 @@ export default class LightBox {
     });
   }
   // Média précédent
-  KeyPrevious(mediaItems, mediaName) {
+  keyPrevious(mediaItems, mediaName) {
     document.addEventListener("keyup", (e) => {
       console.log(e.code);
       if (e.key == "ArrowLeft") {
@@ -104,7 +100,7 @@ export default class LightBox {
     });
   }
   // Média suivant
-  KeyNext(mediaItems, mediaName) {
+  keyNext(mediaItems, mediaName) {
     document.addEventListener("keyup", (e) => {
       if (e.key == "ArrowRight") {
         this.currentIndex += 1;
