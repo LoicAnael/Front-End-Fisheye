@@ -16,6 +16,13 @@ export default class LightBox {
         openLightbox.setAttribute("aria-hidden", "false");
         lightBoxMedia.innerHTML = `${mediaDisplay}`;
         lightBoxName.innerHTML = `${nameDisplay}`;
+        //hidding main content and modal
+        document
+          .querySelector(".main-content")
+          .setAttribute("aria-hidden", "true");
+        document
+          .querySelector("#modal-container")
+          .setAttribute("aria-hidden", "true");
       })
     );
 
@@ -32,6 +39,13 @@ export default class LightBox {
       let lightbox = document.querySelector(".lightbox");
       lightbox.classList.remove("show");
       lightbox.setAttribute("aria-hidden", "true");
+      //display main content and modal
+      document
+        .querySelector(".main-content")
+        .setAttribute("aria-hidden", "false");
+      document
+        .querySelector("#modal-container")
+        .setAttribute("aria-hidden", "false");
     });
   }
   // Média précédent
