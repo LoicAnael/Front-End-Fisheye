@@ -1,4 +1,5 @@
 // Ajout ou retrait d'un like au clic
+"use strict";
 export default class LikeEvent {
   constructor() {
     let gallery = document.querySelector("#photographer-gallery");

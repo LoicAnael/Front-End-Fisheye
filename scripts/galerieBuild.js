@@ -1,5 +1,5 @@
 import GalleryFactory from "./factories/media.js";
-import LikeEvent from "./Likes.js";
+import LikeEvent from "./likes.js";
 import BoxLikes from "./boxlikes.js";
 export default class GaleryBuilder {
   constructor() {
