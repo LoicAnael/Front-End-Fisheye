@@ -1,9 +1,8 @@
-"use strict";
-import { displayPhotographers } from "./index.js";
 import { getDataPhotographers } from "./api.js";
-import DropdownSort from "./dropdown.js";
+import { displayPhotographers } from "./index.js";
 import { displayPhotographerProfil } from "./photographer-profil.js";
 import GaleryBuilder from "./galerieBuild.js";
+import DropdownSort from "./dropdown.js";
 
 async function app() {
   try {
