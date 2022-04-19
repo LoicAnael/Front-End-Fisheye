@@ -7,19 +7,19 @@ import GaleryBuilder from "./galerieBuild.js";
 
 async function app() {
   try {
-    const DATA_FISHEYE = await getDataPhotographers();
+    const DATAFISHEYE = await getDataPhotographers();
     if (window.location.pathname.includes("/photographer.html")) {
       // Affichage Profil Photographe
-      displayPhotographerProfil(DATA_FISHEYE);
+      displayPhotographerProfil(DATAFISHEYE);
       //affichage des medias de la galerie
-      new GaleryBuilder().photographersMedias(DATA_FISHEYE);
+      new GaleryBuilder().photographersMedias(DATAFISHEYE);
       // Affichage Bouton dropdown
-      new DropdownSort().Dropdown(DATA_FISHEYE);
+      new DropdownSort().dropdown(DATAFISHEYE);
 
       return;
     }
     // Affichage Page d'Accueil
-    displayPhotographers(DATA_FISHEYE);
+    displayPhotographers(DATAFISHEYE);
   } catch (err) {
     console.log(err);
   }

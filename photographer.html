@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
-    crossorigin="anonymous"
-  />
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,10 +21,9 @@
     <link href="./normalize.css" rel="stylesheet" />
     <title>Fisheye - photographer</title>
     <script type="module" src="scripts/app.js"></script>
-   
   </head>
   <body>
-    <header class="home-page-header" >
+    <header class="home-page-header">
       <a href="./index.html" title="Fisheye Accueil">
         <img
           src="./assets/images/logo.png"
@@ -33,7 +32,7 @@
         />
       </a>
     </header>
-    <main>
+    <main class="main-content" aria-hidden="false">
       <!-- Profil photographe -->
       <header class="photographers-header">
         <section id="ph-profil-header"></section>
@@ -42,71 +41,137 @@
       <div class="works-sort">
         <span id="sort-text">Trier par</span>
         <div id="sort-wrapper">
-          <button class="sort-btn default-sort" aria-haspopup="listbox">Popularité<i class="fas fa-chevron-down"></i></button>
+          <button class="sort-btn default-sort" aria-haspopup="listbox">
+            Popularité<i class="fas fa-chevron-down"></i>
+          </button>
           <ul class="hidden-sort" role="listbox">
-            <li class="sort" role="option">
-              Popularité 
-            </li>
+            <li class="sort" role="option">Popularité</li>
             <li class="sort" role="option">Date</li>
             <li class="sort" role="option">Tître</li>
           </ul>
         </div>
       </div>
       <!--galerie de photos et videos-->
-      <section id="photographer-gallery"></section>
+      <section id="photographer-gallery" aria-hidden="false"></section>
       <!--box des liikes et prix-->
-      <div id="box-like" ></div>
+      <div id="box-like"></div>
     </main>
-       <!-- Formulaire modal -->
-       <div role="dialog" id="modal-container" aria-hidden="true"  aria-label="Contactez-moi" tabindex="0">
-        <form method="POST" id="contact-form">
-            <header aria-label="contact form header">
-                <h1 id="form-title">
-                    <span>Contactez-moi</span>
-                    <span id="photograph-name"></span>
-                </h1>
-                <button id="clos-btn" title="Close form" type="button" class="fas fa-times close-icon" ></button>
-            </header>
-       
-            <div class="form-data error-name" >
-                <label for="first-name" id="label-firstname">Prénom</label>
-                <input type="text" class="text-control" name="first-name" id="first-name"  aria-labelledby="label-firstname"
-                aria-required="true" placeholder="Exemple: Loic" required>
-            </div>
-       
-            <div class="form-data error-surname">
-                <label for="last-name" id="label-last-name">Nom</label>
-                <input type="text" class="text-control" name="last-name" id="last-name" aria-labelledby="label-last-name"
-                aria-required="true" placeholder="Exemple: Anael" required>
-            </div>
-       
-            <div class="form-data error-email" >
-                <label for="email" id="label-email">Email</label>
-                <input type="email" class="text-control"  name="email" id="email" aria-labelledby="label-email"
-                aria-required="true" placeholder="Exemple: nom@gmail.com" required>
-            </div>
- 
-            <div class="form-data error-message" >
-                <label for="message" id="label-message">Message</label>
-                <textarea class="text-control" name="message" id="message" cols="20" rows="4"
-                aria-required="true" aria-labelledby="label-message" placeholder="Votre message" required></textarea>
-            </div>
-            <button type="submit" id="submit" name="envoyer le formulaire" class="form-submit" title="Send">Envoyer</button>
-        </form>
+    <!-- Formulaire modal -->
+    <div
+      role="dialog"
+      id="modal-container"
+      aria-hidden="true"
+      aria-label="Contactez-moi"
+      tabindex="0"
+    >
+      <form method="POST" id="contact-form">
+        <header aria-label="contact form header">
+          <h1 id="form-title">
+            <span>Contactez-moi</span>
+            <span id="photograph-name"></span>
+          </h1>
+          <button
+            id="clos-btn"
+            title="Close form"
+            type="button"
+            class="fas fa-times close-icon"
+          ></button>
+        </header>
+
+        <div class="form-data error-name">
+          <label for="first-name" id="label-firstname">Prénom</label>
+          <input
+            type="text"
+            class="text-control"
+            name="first-name"
+            id="first-name"
+            aria-labelledby="label-firstname"
+            aria-required="true"
+            placeholder="Exemple: Loic"
+            required
+          />
+        </div>
+
+        <div class="form-data error-surname">
+          <label for="last-name" id="label-last-name">Nom</label>
+          <input
+            type="text"
+            class="text-control"
+            name="last-name"
+            id="last-name"
+            aria-labelledby="label-last-name"
+            aria-required="true"
+            placeholder="Exemple: Anael"
+            required
+          />
+        </div>
+
+        <div class="form-data error-email">
+          <label for="email" id="label-email">Email</label>
+          <input
+            type="email"
+            class="text-control"
+            name="email"
+            id="email"
+            aria-labelledby="label-email"
+            aria-required="true"
+            placeholder="Exemple: nom@gmail.com"
+            required
+          />
+        </div>
+
+        <div class="form-data error-message">
+          <label for="message" id="label-message">Message</label>
+          <textarea
+            class="text-control"
+            name="message"
+            id="message"
+            cols="20"
+            rows="4"
+            aria-required="true"
+            aria-labelledby="label-message"
+            placeholder="Votre message"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          id="submit"
+          name="envoyer le formulaire"
+          class="form-submit"
+          title="Send"
+        >
+          Envoyer
+        </button>
+      </form>
     </div>
 
     <!--Lightbox-->
-    <aside  aria-hidden="true" class="lightbox">
-     <article class="lightbox-body">
-         <span class="fas fa-times close-lightbox" role="button" title="Close dialog"></span>
-         <span class="fas fa-chevron-left " id="previous" role="button" title="Previous image"></span>
-         <span class="fas fa-chevron-right " id="next" role="button" title="Next image"></span>
-         <div id="lightbox-media"></div>
-         <div id="lightbox-name"></div>
-     </article>
+    <aside aria-hidden="true" class="lightbox">
+      <article class="lightbox-body">
+        <span
+          class="fas fa-times close-lightbox"
+          role="button"
+          title="Close dialog"
+          aria-label="Close dialog"
+        ></span>
+        <span
+          class="fas fa-chevron-left"
+          id="previous"
+          role="button"
+          title="Previous image"
+          aria-label="Previous image"
+        ></span>
+        <span
+          class="fas fa-chevron-right"
+          id="next"
+          role="button"
+          title="Next image"
+          aria-label="Next image"
+        ></span>
+        <div id="lightbox-media"></div>
+        <div id="lightbox-name"></div>
+      </article>
     </aside>
-
- 
-    <!--<script src="/scripts/utils/contactForm.js"></script>-->
   </body>
 </html>
