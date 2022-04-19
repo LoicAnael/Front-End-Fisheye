@@ -16,7 +16,6 @@ export function contactModal(PHOTOGRAPHERS) {
   const errMessage = document.querySelector(".error-message");
   //fonction d'ouverture et fermeture du formulaire
   function launchModal() {
-    formFocus();
     modalBg.style.display = "flex";
     let phName = `${PHOTOGRAPHERS.name}`;
     modalPhName.innerHTML = phName;
@@ -26,7 +25,6 @@ export function contactModal(PHOTOGRAPHERS) {
     document.querySelector(".lightbox").setAttribute("aria-hidden", "true");
   }
   function closeModal() {
-    formBlur();
     modalBg.style.display = "none";
     modalBg.setAttribute("aria-hidden", "true");
     //display main content and lightbox
@@ -92,14 +90,4 @@ export function contactModal(PHOTOGRAPHERS) {
     }
   }
   document.addEventListener("keydown", tabClose);
-
-  //fonction pour lecture d'outils d'assistance
-  function formFocus() {
-    form.focus();
-    modalBg.setAttribute("tabindex", "1");
-  }
-  function formBlur() {
-    form.blur();
-    modalBg.setAttribute("tabindex", "0");
-  }
 }

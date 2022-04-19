@@ -33,54 +33,65 @@ export default class LightBox {
     this.close();
     this.keyClose();
   }
+
   // Fermeture de la lightbox
+  handleClose() {
+    let lightbox = document.querySelector(".lightbox");
+    lightbox.classList.remove("show");
+    lightbox.setAttribute("aria-hidden", "true");
+    //display main content and modal
+    document
+      .querySelector(".main-content")
+      .setAttribute("aria-hidden", "false");
+    document
+      .querySelector("#modal-container")
+      .setAttribute("aria-hidden", "false");
+  }
   close() {
     document.querySelector(".close-lightbox").addEventListener("click", () => {
-      let lightbox = document.querySelector(".lightbox");
-      lightbox.classList.remove("show");
-      lightbox.setAttribute("aria-hidden", "true");
-      //display main content and modal
-      document
-        .querySelector(".main-content")
-        .setAttribute("aria-hidden", "false");
-      document
-        .querySelector("#modal-container")
-        .setAttribute("aria-hidden", "false");
+      this.handleClose();
     });
   }
+
   // Média précédent
+  handlePrevious(mediaItems, mediaName) {
+    this.currentIndex -= 1;
+    //si l'index est inferieure a 0 on la reaffecte la valeur du dernier element des medias
+    if (this.currentIndex < 0) {
+      this.currentIndex = mediaItems.length - 1;
+    }
+    let lightBoxMedia = document.getElementById("lightbox-media");
+    let lightBoxName = document.getElementById("lightbox-name");
+    let mediaDisplay = mediaItems[this.currentIndex];
+    let nameDisplay = mediaName[this.currentIndex];
+    lightBoxMedia.innerHTML = `${mediaDisplay}`;
+    lightBoxName.innerHTML = `${nameDisplay}`;
+  }
   previous(mediaItems, mediaName) {
-    let previou = document.getElementById("previous");
-    previou.addEventListener("click", () => {
-      this.currentIndex -= 1;
-      //si l'index est inferieure a 0 on la reaffecte la valeur du dernier element des medias
-      if (this.currentIndex < 0) {
-        this.currentIndex = mediaItems.length - 1;
-      }
-      let lightBoxMedia = document.getElementById("lightbox-media");
-      let lightBoxName = document.getElementById("lightbox-name");
-      let mediaDisplay = mediaItems[this.currentIndex];
-      let nameDisplay = mediaName[this.currentIndex];
-      lightBoxMedia.innerHTML = `${mediaDisplay}`;
-      lightBoxName.innerHTML = `${nameDisplay}`;
+    let previous = document.getElementById("previous");
+    previous.addEventListener("click", () => {
+      this.handlePrevious(mediaItems, mediaName);
     });
   }
 
   // Média suivant
+  handleNext(mediaItems, mediaName) {
+    this.currentIndex += 1;
+    //si l'index est au dernier element des medias, on reinitialise sa valeur
+    if (this.currentIndex > mediaItems.length - 1) {
+      this.currentIndex = 0;
+    }
+    let lightBoxMedia = document.getElementById("lightbox-media");
+    let lightBoxName = document.getElementById("lightbox-name");
+    let mediaDisplay = mediaItems[this.currentIndex];
+    let nameDisplay = mediaName[this.currentIndex];
+    lightBoxMedia.innerHTML = `${mediaDisplay}`;
+    lightBoxName.innerHTML = `${nameDisplay}`;
+  }
   next(mediaItems, mediaName) {
     let next = document.getElementById("next");
     next.addEventListener("click", () => {
-      this.currentIndex += 1;
-      //si l'index est au dernier element des medias, on reinitialise sa valeur
-      if (this.currentIndex > mediaItems.length - 1) {
-        this.currentIndex = 0;
-      }
-      let lightBoxMedia = document.getElementById("lightbox-media");
-      let lightBoxName = document.getElementById("lightbox-name");
-      let mediaDisplay = mediaItems[this.currentIndex];
-      let nameDisplay = mediaName[this.currentIndex];
-      lightBoxMedia.innerHTML = `${mediaDisplay}`;
-      lightBoxName.innerHTML = `${nameDisplay}`;
+      this.handleNext(mediaItems, mediaName);
     });
   }
 
@@ -89,9 +100,7 @@ export default class LightBox {
   keyClose() {
     document.addEventListener("keyup", (e) => {
       if (e.key == "Escape") {
-        let lightbox = document.querySelector(".lightbox");
-        lightbox.classList.remove("show");
-        lightbox.setAttribute("aria-hidden", "true");
+        this.handleClose();
       }
     });
   }
@@ -100,16 +109,7 @@ export default class LightBox {
     document.addEventListener("keyup", (e) => {
       console.log(e.code);
       if (e.key == "ArrowLeft") {
-        this.currentIndex -= 1;
-        if (this.currentIndex < 0) {
-          this.currentIndex = mediaItems.length - 1;
-        }
-        let lightBoxMedia = document.getElementById("lightbox-media");
-        let lightBoxName = document.getElementById("lightbox-name");
-        let mediaDisplay = mediaItems[this.currentIndex];
-        let nameDisplay = mediaName[this.currentIndex];
-        lightBoxMedia.innerHTML = `${mediaDisplay}`;
-        lightBoxName.innerHTML = `${nameDisplay}`;
+        this.handlePrevious(mediaItems, mediaName);
       }
     });
   }
@@ -117,16 +117,7 @@ export default class LightBox {
   keyNext(mediaItems, mediaName) {
     document.addEventListener("keyup", (e) => {
       if (e.key == "ArrowRight") {
-        this.currentIndex += 1;
-        if (this.currentIndex > mediaItems.length - 1) {
-          this.currentIndex = 0;
-        }
-        let lightBoxMedia = document.getElementById("lightbox-media");
-        let lightBoxName = document.getElementById("lightbox-name");
-        let mediaDisplay = mediaItems[this.currentIndex];
-        let nameDisplay = mediaName[this.currentIndex];
-        lightBoxMedia.innerHTML = `${mediaDisplay}`;
-        lightBoxName.innerHTML = `${nameDisplay}`;
+        this.handleNext(mediaItems, mediaName);
       }
     });
   }

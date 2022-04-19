@@ -2,11 +2,10 @@
 export default class LikeEvent {
   constructor() {
     let gallery = document.querySelector("#photographer-gallery");
-
     gallery.addEventListener("click", (e) => {
-      let likeBtn = -1 !== e.target.classList.value.indexOf("fa-heart");
-      console.log(e);
-      if (likeBtn) {
+      let islikeBtn = -1 !== e.target.classList.value.indexOf("fa-heart");
+      console.log(islikeBtn);
+      if (islikeBtn) {
         let counterLike =
           e.target.parentNode.firstElementChild.firstElementChild;
         let totalPhLikes = document.getElementById("total-likes");
