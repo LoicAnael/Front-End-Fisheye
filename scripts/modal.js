@@ -34,6 +34,11 @@ export function contactModal(PHOTOGRAPHERS) {
     document.querySelector(".lightbox").setAttribute("aria-hidden", "false");
     form.reset();
   }
+  modalBg.addEventListener("click", (e) => {
+    if (e.target == e.currentTarget) {
+      closeModal();
+    }
+  });
   modalBtn.addEventListener("click", launchModal);
   modalCloseBtn.addEventListener("click", closeModal);
   //validation du formuaire

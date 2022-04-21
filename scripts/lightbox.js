@@ -32,6 +32,7 @@ export default class LightBox {
     this.keyNext(mediaItems, mediaName);
     this.close();
     this.keyClose();
+    this.whiteSpaceClick();
   }
 
   // Fermeture de la lightbox
@@ -52,7 +53,13 @@ export default class LightBox {
       this.handleClose();
     });
   }
-
+  whiteSpaceClick() {
+    document.querySelector(".lightbox").addEventListener("click", (e) => {
+      if (e.target == e.currentTarget) {
+        this.handleClose();
+      }
+    });
+  }
   // Média précédent
   handlePrevious(mediaItems, mediaName) {
     this.currentIndex -= 1;
