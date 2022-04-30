@@ -4,7 +4,7 @@ import { contactModal } from "./modal.js";
 export async function displayPhotographerProfil(dataFisheye) {
   const PHOTOGRAPHERS_DATA = dataFisheye.dataPhotographers;
   //recuperation de la valeur de ID dans l'URL
-  /*const ID = window.location.search.substring(1).split("=")[1];*/
+  //const ID = window.location.search.substring(1).split("=")[1];
 
   let searchParam = new URLSearchParams(window.location.search);
   const ID = searchParam.get("id");

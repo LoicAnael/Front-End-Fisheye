@@ -21,7 +21,7 @@ export default class DropdownSort {
     let sortBtn = document.querySelectorAll(".sort");
 
     sortBtn.forEach((btn, index) =>
-      btn.addEventListener("click", (e) => {
+      btn.addEventListener("click", () => {
         hiddenSort[0].style.display = "none";
         if (index == 0) {
           btnSort.innerHTML = `Popularité<i class="fas fa-chevron-down"></i>`;
